@@ -13,8 +13,27 @@ struct AlbumListView: View {
     
     var body: some View {
         NavigationView {
-            List(viewModel.albums, id: \.id) { album in
-                Text(album.collectionName ?? "Unknown Album")
+            List {
+                ForEach(viewModel.albums, id: \.id) { album in
+                    Text(album.collectionName ?? "Unknown Album")
+                }
+                
+                switch viewModel.state {
+                case .good:
+                    Color.clear
+                        .onAppear(perform: {
+                            viewModel.loadMore()
+                        })
+                case .isLoading:
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        .frame(maxWidth: .infinity)
+                case .loadedAll:
+                    Color.gray
+                case .error(let string):
+                    Text(string)
+                        .foregroundColor(.pink)
+                }
             }
             .listStyle(.plain)
             .searchable(text: $viewModel.searchTerm)
@@ -23,6 +42,19 @@ struct AlbumListView: View {
     }
 }
 
-#Preview {
-    AlbumListView()
+struct AlbumPlaceHolderView: View {
+    @Binding var searchTerm: String
+    let suggestions = ["rammstein", "cry to me", "maneskin"]
+    var body: some View {
+        VStack {
+            ForEach(suggestions, id: \.self) { text in
+                Button(action: {
+                    searchTerm = text
+                }, label: {
+                    Text(text)
+                })
+            }
+        }
+    }
 }
+
