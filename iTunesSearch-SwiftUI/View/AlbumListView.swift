@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AlbumListView: View {
     
-    @StateObject var viewModel = AlbumListViewModel()
+    @ObservedObject var viewModel : AlbumListViewModel
     
     var body: some View {
         NavigationView {
@@ -36,25 +36,9 @@ struct AlbumListView: View {
                 }
             }
             .listStyle(.plain)
-            .searchable(text: $viewModel.searchTerm)
-            .navigationTitle("Search Albums")
         }
     }
 }
 
-struct AlbumPlaceHolderView: View {
-    @Binding var searchTerm: String
-    let suggestions = ["rammstein", "cry to me", "maneskin"]
-    var body: some View {
-        VStack {
-            ForEach(suggestions, id: \.self) { text in
-                Button(action: {
-                    searchTerm = text
-                }, label: {
-                    Text(text)
-                })
-            }
-        }
-    }
-}
+
 

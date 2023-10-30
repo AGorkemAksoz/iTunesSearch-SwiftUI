@@ -16,6 +16,7 @@
 		DE43A0D22AEA846000F698F8 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE43A0D12AEA846000F698F8 /* Song.swift */; };
 		DE43A0D42AEA84A400F698F8 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE43A0D32AEA84A400F698F8 /* Movie.swift */; };
 		DE43A0D62AEA88E200F698F8 /* AlbumListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE43A0D52AEA88E200F698F8 /* AlbumListView.swift */; };
+		DE43A0DD2AEFEDE800F698F8 /* AlbumSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE43A0DC2AEFEDE800F698F8 /* AlbumSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		DE43A0D12AEA846000F698F8 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		DE43A0D32AEA84A400F698F8 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		DE43A0D52AEA88E200F698F8 /* AlbumListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListView.swift; sourceTree = "<group>"; };
+		DE43A0DC2AEFEDE800F698F8 /* AlbumSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				DE43A0D52AEA88E200F698F8 /* AlbumListView.swift */,
+				DE43A0DC2AEFEDE800F698F8 /* AlbumSearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			files = (
 				DE43A0D02AEA830300F698F8 /* AlbumListViewModel.swift in Sources */,
 				DE43A0BF2AEA7CAA00F698F8 /* ContentView.swift in Sources */,
+				DE43A0DD2AEFEDE800F698F8 /* AlbumSearchView.swift in Sources */,
 				DE43A0D42AEA84A400F698F8 /* Movie.swift in Sources */,
 				DE43A0BD2AEA7CAA00F698F8 /* iTunesSearch_SwiftUIApp.swift in Sources */,
 				DE43A0CE2AEA820200F698F8 /* Album.swift in Sources */,
@@ -324,7 +328,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -354,7 +358,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
