@@ -21,6 +21,12 @@ class AlbumListViewModel: ObservableObject {
         case error(String)
     }
     
+    enum EntityType: String {
+        case album
+        case song
+        case movie
+    }
+    
     @Published var searchTerm: String = ""
     @Published var albums: [Album] = [Album]()
     
@@ -62,8 +68,7 @@ class AlbumListViewModel: ObservableObject {
             return
         }
         
-        let offset = page * limit
-        guard let url = URL(string: "https://itunes.apple.com/search?term=\(searchTerm)&entity=album&limit=\(limit)&offset=\(offset)") else {
+        guard let url = createURL(for: searchTerm, type: .album) else {
             return
         }
         
@@ -104,6 +109,25 @@ class AlbumListViewModel: ObservableObject {
         }.resume()
         
         
+    }
+    
+    func createURL(for searchTerm: String, type: EntityType) -> URL? {
+        // https://itunes.apple.com/search?term=jack+johnson&entity=album&limit=5&offset=10
+        let baseURL = "https://itunes.apple.com/search"
+        
+        let offset = page * limit
+        
+        let queryItems = [
+            URLQueryItem(name: "term", value: searchTerm),
+            URLQueryItem(name: "entity", value: type.rawValue),
+            URLQueryItem(name: "limit", value: String(limit)),
+            URLQueryItem(name: "offset", value: String(offset))
+        ]
+        
+        var components = URLComponents(string: baseURL)
+        components?.queryItems = queryItems
+        print("URL: \(components?.url)")
+        return components?.url
     }
     
 }
