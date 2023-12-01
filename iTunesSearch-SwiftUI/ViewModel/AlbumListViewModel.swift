@@ -37,7 +37,7 @@ class AlbumListViewModel: ObservableObject {
     }
     
     let limit: Int = 20
-    var page: Int = 0
+    private var page: Int = 0
     
     var subscriptions = Set<AnyCancellable>()
     
@@ -109,6 +109,30 @@ class AlbumListViewModel: ObservableObject {
         }.resume()
         
         
+    }
+    
+    func fetch<T: Codable>(type: T.Type, url: URL?, completion: @escaping (Result<T, APIError>) -> Void) {
+        guard let url = url else {
+            let error = APIError.badURL
+            completion(Result.failure(error))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
+            if let error = error as? URLError{
+                completion(Result.failure(.urlSession(error)))
+            } else if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode){
+                completion(Result.failure(.badResponse(response.statusCode)))
+            } else if let data = data {
+                do {
+                    let result = try JSONDecoder().decode(type, from: data)
+                    completion(Result.success(result))
+                } catch  {
+                    completion(Result.failure(.decoding(error as? DecodingError)))
+                }
+            }
+        }
+        .resume()
     }
     
     func createURL(for searchTerm: String, type: EntityType) -> URL? {
