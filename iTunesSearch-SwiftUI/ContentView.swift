@@ -9,6 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        AlbumSearchView()
+        TabView {
+            AlbumSearchView()
+                .tabItem {
+                    Label("Albums", systemImage: "music.note")
+                }
+            
+            MovieSearchListView()
+                .tabItem {
+                    Label("Movies", systemImage: "tv")
+                }
+        }
     }
 }
