@@ -22,7 +22,7 @@ struct Movie: Codable {
     let previewURL: String?
     let artworkUrl30, artworkUrl60, artworkUrl100: String?
     let collectionPrice, trackPrice: Double?
-    let releaseDate: Date?
+    let releaseDate: String?
     let collectionExplicitness, trackExplicitness: String?
     let trackTimeMillis: Int?
     let country, currency, primaryGenreName, contentAdvisoryRating: String?

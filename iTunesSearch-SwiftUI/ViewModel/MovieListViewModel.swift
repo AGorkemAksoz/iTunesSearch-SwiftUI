@@ -13,9 +13,8 @@ class MovieListViewModel: ObservableObject {
     @Published var movie: [Movie] = [Movie]()
     @Published var state: FetchState = .good
     
-    let limit: Int = 20
+    let defaultLimits: Int = 50
     private let service: APIService = APIService()
-    var page: Int = 0
     
     var subscriptions = Set<AnyCancellable>()
     
@@ -27,7 +26,6 @@ class MovieListViewModel: ObservableObject {
             .sink { [weak self] term in
                 self?.state = .good
                 self?.movie = []
-                self?.page = 0
                 self?.fetchMovies(for: term)
             }.store(in: &subscriptions)
         
@@ -46,16 +44,20 @@ class MovieListViewModel: ObservableObject {
 
         state = .isLoading
         
-        service.fetchMovies(searchTerm: searchTerm, page: page, limit: limit) { [weak self] result in
+        service.fetchMovies(searchTerm: searchTerm) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let result):
-                    for movie in result.results! {
-                        self?.movie.append(movie)
+
+                    self?.movie = result.results ?? []
+                    
+                    if result.resultCount == self?.defaultLimits {
+                        self?.state = .good
+                    } else {
+                        self?.state = .loadedAll
                     }
-                    self?.page += 1
-                    self?.state = (result.results?.count == self?.limit) ? .good : .loadedAll
-                    print("fetched \(result.resultCount)")
+                    
+                    print("fetched \(result.resultCount)  \(result.results?.count)")
                 case .failure(let error):
                     self?.state = .error("Could not load: \(error.localizedDescription)")
                     
