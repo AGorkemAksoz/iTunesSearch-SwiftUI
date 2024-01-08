@@ -14,10 +14,11 @@ struct SongResult: Codable {
 }
 
 // MARK: - Song
-struct Song: Codable {
+struct Song: Codable, Identifiable{
     let wrapperType: WrapperType?
     let kind: Kind?
-    let artistID, collectionID, trackID: Int?
+    let artistID, collectionID: Int?
+    let id: Int?
     let artistName, collectionName, trackName, collectionCensoredName: String?
     let trackCensoredName: String?
     let artistViewURL, collectionViewURL, trackViewURL: String?
@@ -41,7 +42,7 @@ struct Song: Codable {
         case wrapperType, kind
         case artistID = "artistId"
         case collectionID = "collectionId"
-        case trackID = "trackId"
+        case id = "trackId"
         case artistName, collectionName, trackName, collectionCensoredName, trackCensoredName
         case artistViewURL = "artistViewUrl"
         case collectionViewURL = "collectionViewUrl"

@@ -24,11 +24,16 @@ class MovieListViewModel: ObservableObject {
             .dropFirst()
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink { [weak self] term in
-                self?.state = .good
-                self?.movie = []
+                self?.clear()
                 self?.fetchMovies(for: term)
             }.store(in: &subscriptions)
         
+    }
+    
+    func clear() {
+        state = .good
+        movie = []
+//        page = 0
     }
 
     

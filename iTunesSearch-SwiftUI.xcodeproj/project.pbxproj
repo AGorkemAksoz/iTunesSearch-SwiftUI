@@ -24,6 +24,12 @@
 		DE43A0D42AEA84A400F698F8 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE43A0D32AEA84A400F698F8 /* Movie.swift */; };
 		DE43A0D62AEA88E200F698F8 /* AlbumListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE43A0D52AEA88E200F698F8 /* AlbumListView.swift */; };
 		DE43A0DD2AEFEDE800F698F8 /* AlbumSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE43A0DC2AEFEDE800F698F8 /* AlbumSearchView.swift */; };
+		DEA1C3DC2B4BE0C40089FCAF /* SearchPlaceHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA1C3DB2B4BE0C40089FCAF /* SearchPlaceHolderView.swift */; };
+		DEA2FBAC2B3DB4080027ED8E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2FBAB2B3DB4080027ED8E /* SearchView.swift */; };
+		DEA2FBAE2B3DB4F10027ED8E /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2FBAD2B3DB4F10027ED8E /* EntityType.swift */; };
+		DEA2FBB02B4596140027ED8E /* SearchAllListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2FBAF2B4596140027ED8E /* SearchAllListView.swift */; };
+		DEA2FBB22B46F0090027ED8E /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2FBB12B46F0090027ED8E /* SongListView.swift */; };
+		DEA2FBB42B46F0390027ED8E /* SongSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2FBB32B46F0390027ED8E /* SongSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +51,12 @@
 		DE43A0D32AEA84A400F698F8 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		DE43A0D52AEA88E200F698F8 /* AlbumListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListView.swift; sourceTree = "<group>"; };
 		DE43A0DC2AEFEDE800F698F8 /* AlbumSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSearchView.swift; sourceTree = "<group>"; };
+		DEA1C3DB2B4BE0C40089FCAF /* SearchPlaceHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceHolderView.swift; sourceTree = "<group>"; };
+		DEA2FBAB2B3DB4080027ED8E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		DEA2FBAD2B3DB4F10027ED8E /* EntityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityType.swift; sourceTree = "<group>"; };
+		DEA2FBAF2B4596140027ED8E /* SearchAllListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAllListView.swift; sourceTree = "<group>"; };
+		DEA2FBB12B46F0090027ED8E /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
+		DEA2FBB32B46F0390027ED8E /* SongSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +138,8 @@
 		DE43A0CA2AEA81DC00F698F8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DEA2FBAA2B3DB3E20027ED8E /* Song */,
+				DEA2FBA92B3DB3D90027ED8E /* Search */,
 				DD1A3E682B30DF940060B4E5 /* Movie */,
 				DD1A3E672B30DF8A0060B4E5 /* Album */,
 			);
@@ -150,8 +164,28 @@
 				DE43A0D32AEA84A400F698F8 /* Movie.swift */,
 				DD35E4E32AF7D2B6005690F9 /* APIError.swift */,
 				DD1A3E602B30DB870060B4E5 /* FetchState.swift */,
+				DEA2FBAD2B3DB4F10027ED8E /* EntityType.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DEA2FBA92B3DB3D90027ED8E /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				DEA2FBAB2B3DB4080027ED8E /* SearchView.swift */,
+				DEA2FBAF2B4596140027ED8E /* SearchAllListView.swift */,
+				DEA1C3DB2B4BE0C40089FCAF /* SearchPlaceHolderView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		DEA2FBAA2B3DB3E20027ED8E /* Song */ = {
+			isa = PBXGroup;
+			children = (
+				DEA2FBB12B46F0090027ED8E /* SongListView.swift */,
+				DEA2FBB32B46F0390027ED8E /* SongSearchView.swift */,
+			);
+			path = Song;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,18 +258,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEA2FBB02B4596140027ED8E /* SearchAllListView.swift in Sources */,
 				DE43A0D02AEA830300F698F8 /* AlbumListViewModel.swift in Sources */,
 				DD1A3E6A2B30DFAC0060B4E5 /* MovieSearchListView.swift in Sources */,
 				DD1A3E632B30DBE20060B4E5 /* SongListViewModel.swift in Sources */,
 				DD1A3E612B30DB870060B4E5 /* FetchState.swift in Sources */,
 				DE43A0BF2AEA7CAA00F698F8 /* ContentView.swift in Sources */,
+				DEA2FBAE2B3DB4F10027ED8E /* EntityType.swift in Sources */,
 				DE43A0DD2AEFEDE800F698F8 /* AlbumSearchView.swift in Sources */,
 				DD1A3E652B30DD600060B4E5 /* MovieListViewModel.swift in Sources */,
 				DE43A0D42AEA84A400F698F8 /* Movie.swift in Sources */,
+				DEA2FBB22B46F0090027ED8E /* SongListView.swift in Sources */,
+				DEA2FBB42B46F0390027ED8E /* SongSearchView.swift in Sources */,
 				DE43A0BD2AEA7CAA00F698F8 /* iTunesSearch_SwiftUIApp.swift in Sources */,
 				DE43A0CE2AEA820200F698F8 /* Album.swift in Sources */,
 				DD1A3E5F2B2F14A40060B4E5 /* APIService.swift in Sources */,
 				DE43A0D22AEA846000F698F8 /* Song.swift in Sources */,
+				DEA1C3DC2B4BE0C40089FCAF /* SearchPlaceHolderView.swift in Sources */,
+				DEA2FBAC2B3DB4080027ED8E /* SearchView.swift in Sources */,
 				DE43A0D62AEA88E200F698F8 /* AlbumListView.swift in Sources */,
 				DD35E4E42AF7D2B6005690F9 /* APIError.swift in Sources */,
 				DD1A3E6C2B30E0940060B4E5 /* MovieListView.swift in Sources */,

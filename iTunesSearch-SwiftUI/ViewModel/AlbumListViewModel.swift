@@ -5,8 +5,8 @@
 //  Created by Karin Prater on 25.07.22.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 // https://itunes.apple.com/search?term=jack+johnson&entity=album&limit=5&offset=10
 // https://itunes.apple.com/search?term=jack+johnson&entity=song&limit=5
@@ -30,11 +30,15 @@ class AlbumListViewModel: ObservableObject {
             .dropFirst()
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink { [weak self] term in
-                self?.state = .good
-                self?.albums = []
+                self?.clear()
                 self?.fetchAlbums(for: term)
             }.store(in: &subscriptions)
         
+    }
+    func clear() {
+        state = .good
+        albums = []
+        page = 0
     }
     
     func loadMore() {
