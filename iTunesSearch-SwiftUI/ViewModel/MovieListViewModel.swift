@@ -21,6 +21,7 @@ class MovieListViewModel: ObservableObject {
     init() {
         
         $searchTerm
+            .removeDuplicates()
             .dropFirst()
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink { [weak self] term in
@@ -62,7 +63,7 @@ class MovieListViewModel: ObservableObject {
                         self?.state = .loadedAll
                     }
                     
-                    print("fetched \(result.resultCount)  \(result.results?.count)")
+                    print("fetched Movies \(result.resultCount)  \(result.results?.count)")
                 case .failure(let error):
                     self?.state = .error("Could not load: \(error.localizedDescription)")
                     

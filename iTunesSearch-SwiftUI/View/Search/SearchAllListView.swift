@@ -14,6 +14,13 @@ struct SearchAllListView: View {
     @ObservedObject var moviewListViewModel: MovieListViewModel
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Search all")
+            
+            Text("Movies: \(moviewListViewModel.movie.count)")
+            Text("Albums: \(albumListViewModel.albums.count)")
+            Text("Songs: \(songListViewModel.songs.count)")
+            
+        }
     }
 }
