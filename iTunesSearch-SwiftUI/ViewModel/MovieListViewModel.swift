@@ -63,7 +63,7 @@ class MovieListViewModel: ObservableObject {
                         self?.state = .loadedAll
                     }
                     
-                    print("fetched Movies \(result.resultCount)  \(result.results?.count)")
+                    print("fetched Movies \(result.resultCount!)  \(result.results!.count)")
                 case .failure(let error):
                     self?.state = .error("Could not load: \(error.localizedDescription)")
                     

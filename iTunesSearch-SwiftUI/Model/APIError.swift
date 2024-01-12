@@ -23,7 +23,7 @@ enum APIError: Error, CustomStringConvertible {
         case .badResponse(let int):
             return "Bad Response with Status Code: \(int)"
         case .decoding(let decodingError):
-            return "Decoding Error \(decodingError)"
+            return "Decoding Error \(decodingError!)"
         case .unknown:
             return "Unknown Error"
         }

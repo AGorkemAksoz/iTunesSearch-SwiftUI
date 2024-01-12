@@ -15,7 +15,16 @@ struct AlbumListView: View {
         NavigationView {
             List {
                 ForEach(viewModel.albums, id: \.id) { album in
-                    Text(album.collectionName ?? "Unknown Album")
+                    HStack {
+
+                        AsyncPhoto(entityType: .album, album: album)
+                        
+                        ItemInfo(entityType: .album, album: album)
+                        
+                        Spacer()
+                        
+                        PriceTag(price: String(album.collectionPrice ?? 0), currency: album.currency == "USD" ? "$" : "€")
+                    }
                 }
                 
                 switch viewModel.state {

@@ -14,7 +14,16 @@ struct MovieListView: View {
         NavigationView {
             List {
                 ForEach(viewModel.movie, id: \.trackID) { movie in
-                    Text(movie.trackName ?? "Unknown Album")
+                    HStack {
+
+                        AsyncPhoto(entityType: .movie, movie: movie)
+                        
+                        ItemInfo(entityType: .movie, movie: movie)
+                        
+                        Spacer()
+                        
+                        PriceTag(price: String(movie.trackHDPrice ?? 0), currency: movie.currency == "USD" ? "$" : "€")
+                    }
                 }
                 
                 switch viewModel.state {

@@ -15,7 +15,17 @@ struct SongListView: View {
         NavigationView {
             List {
                 ForEach(viewModel.songs) { song in
-                    Text(song.trackName ?? "Unknown Song")
+                    HStack {
+
+                        AsyncPhoto(entityType: .song, song: song)
+                        
+                        ItemInfo(entityType: .song, song: song)
+                        
+                        Spacer()
+                        
+                        PriceTag(price: String(song.trackPrice ?? 0), currency: song.currency == "USD" ? "$" : "€")
+                    }
+                    .padding(.bottom, -6)
                 }
                 
                 switch viewModel.state {
@@ -37,5 +47,11 @@ struct SongListView: View {
             }
             .listStyle(.plain)
         }
+    }
+}
+
+struct SongListView_Previews: PreviewProvider  {
+    static var previews: some View {
+        SongListView(viewModel: SongListViewModel.example())
     }
 }

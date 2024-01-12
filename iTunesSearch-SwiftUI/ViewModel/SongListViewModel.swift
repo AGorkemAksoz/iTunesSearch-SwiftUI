@@ -63,14 +63,18 @@ class SongListViewModel: ObservableObject {
                     }
                     self?.page += 1
                     self?.state = (result.results?.count == self?.limit) ? .good : .loadedAll
-                    print("fetched Songs \(result.resultCount)")
+                    print("fetched Songs \(result.resultCount!)")
                 case .failure(let error):
                     self?.state = .error("Could not load: \(error.localizedDescription)")
                     
                 }
             }
         }
-        
-        
+    }
+    
+    static func example() -> SongListViewModel {
+        let vm = SongListViewModel()
+        vm.songs = [Song.privewSong()]
+        return vm
     }
 }
