@@ -22,6 +22,3 @@ struct PriceTag: View {
     }
 }
 
-#Preview {
-    PriceTag(price: "11.49", currency: "$")
-}

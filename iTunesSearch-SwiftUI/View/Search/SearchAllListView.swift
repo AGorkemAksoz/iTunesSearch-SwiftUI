@@ -13,14 +13,25 @@ struct SearchAllListView: View {
     @ObservedObject var songListViewModel: SongListViewModel
     @ObservedObject var moviewListViewModel: MovieListViewModel
     
+    
+    
     var body: some View {
-        VStack {
-            Text("Search all")
-            
-            Text("Movies: \(moviewListViewModel.movie.count)")
-            Text("Albums: \(albumListViewModel.albums.count)")
-            Text("Songs: \(songListViewModel.songs.count)")
-            
+        ScrollView {
+            LazyVStack {
+                
+                if songListViewModel.songs.count != 0 {
+                    SongSectionView(songListViewModel: songListViewModel)
+                }
+                
+                if moviewListViewModel.movie.count != 0 {
+                    MovieSectionView(moviewListViewModel: moviewListViewModel)
+                }
+                
+                if albumListViewModel.albums.count != 0 {
+                    AlbumSectionView(albumListViewModel: albumListViewModel)
+                }
+                
+            }
         }
     }
 }
