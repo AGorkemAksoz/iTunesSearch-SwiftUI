@@ -12,41 +12,40 @@ struct SongListView: View {
     @ObservedObject var viewModel : SongListViewModel
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(viewModel.songs) { song in
-                    HStack {
-
-                        AsyncPhoto(entityType: .song, song: song)
-                        
-                        ItemInfo(entityType: .song, song: song)
-                        
-                        Spacer()
-                        
-                        PriceTag(price: String(song.trackPrice ?? 0), currency: song.currency == "USD" ? "$" : "€")
-                    }
-                    .padding(.bottom, -6)
+        List {
+            ForEach(viewModel.songs) { song in
+                HStack {
+                    
+                    AsyncPhoto(entityType: .song, song: song)
+                    
+                    ItemInfo(entityType: .song, song: song)
+                    
+                    Spacer()
+                    
+                    PriceTag(price: String(song.trackPrice ?? 0), currency: song.currency == "USD" ? "$" : "€")
                 }
-                
-                switch viewModel.state {
-                case .good:
-                    Color.clear
-                        .onAppear(perform: {
-                            viewModel.loadMore()
-                        })
-                case .isLoading:
-                    ProgressView()
-                        .progressViewStyle(.circular)
-                        .frame(maxWidth: .infinity)
-                case .loadedAll:
-                    Color.gray
-                case .error(let string):
-                    Text(string)
-                        .foregroundColor(.pink)
-                }
+                .padding(.bottom, -6)
             }
-            .listStyle(.plain)
+            
+            switch viewModel.state {
+            case .good:
+                Color.clear
+                    .onAppear(perform: {
+                        viewModel.loadMore()
+                    })
+            case .isLoading:
+                ProgressView()
+                    .progressViewStyle(.circular)
+                    .frame(maxWidth: .infinity)
+            case .loadedAll:
+                Color.gray
+            case .error(let string):
+                Text(string)
+                    .foregroundColor(.pink)
+            }
         }
+        .listStyle(.plain)
+        
     }
 }
 

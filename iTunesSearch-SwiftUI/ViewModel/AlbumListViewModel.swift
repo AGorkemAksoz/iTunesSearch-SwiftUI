@@ -25,7 +25,6 @@ class AlbumListViewModel: ObservableObject {
     var subscriptions = Set<AnyCancellable>()
     
     init() {
-        
         $searchTerm
             .removeDuplicates()
             .dropFirst()
@@ -33,7 +32,8 @@ class AlbumListViewModel: ObservableObject {
             .sink { [weak self] term in
                 self?.clear()
                 self?.fetchAlbums(for: term)
-            }.store(in: &subscriptions)
+            }
+            .store(in: &subscriptions)
         
     }
     func clear() {

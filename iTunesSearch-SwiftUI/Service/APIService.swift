@@ -17,6 +17,11 @@ class APIService {
         
     }
     
+    func fetchSongs(for albumID: Int, completion: @escaping (Result<SongResult, APIError>) -> Void) {
+        guard let url = createURL(for: albumID, type: .song) else { return }
+        fetch(type: SongResult.self, url: url, completion: completion)
+    }
+    
     func fetchSongs(searchTerm: String, page: Int, limit: Int, completion: @escaping (Result<SongResult, APIError>) -> Void) {
         let url = createURL(for: searchTerm, page: page, limit: limit, type: .song)
         fetch(type: SongResult.self, url: url, completion: completion)
@@ -69,5 +74,17 @@ class APIService {
         var components = URLComponents(string: baseURL)
         components?.queryItems = queryItems
         return components?.url
+    }
+    
+    func createURL(for id: Int, type: EntityType) -> URL? {
+        let baseURL = "https://itunes.apple.com/lookup"
+        
+        var queryItems = [URLQueryItem(name: "id", value: String(id)),
+                          URLQueryItem(name: "entity", value: type.rawValue)]
+        
+        var components = URLComponents(string: baseURL)
+        components?.queryItems = queryItems
+        return components?.url
+        
     }
 }

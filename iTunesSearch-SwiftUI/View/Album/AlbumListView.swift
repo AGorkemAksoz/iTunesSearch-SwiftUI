@@ -12,19 +12,23 @@ struct AlbumListView: View {
     @ObservedObject var viewModel : AlbumListViewModel
     
     var body: some View {
-        NavigationView {
             List {
                 ForEach(viewModel.albums, id: \.id) { album in
-                    HStack {
+                    NavigationLink {
+                        AlbumDetailView(album: album)
+                    } label: {
+                        HStack {
 
-                        AsyncPhoto(entityType: .album, album: album)
-                        
-                        ItemInfo(entityType: .album, album: album)
-                        
-                        Spacer()
-                        
-                        PriceTag(price: String(album.collectionPrice ?? 0), currency: album.currency == "USD" ? "$" : "€")
+                            AsyncPhoto(entityType: .album, album: album)
+                            
+                            ItemInfo(entityType: .album, album: album)
+                            
+                            Spacer()
+                            
+                            PriceTag(price: String(album.collectionPrice ?? 0), currency: album.currency == "USD" ? "$" : "€")
+                        }
                     }
+
                 }
                 
                 switch viewModel.state {
@@ -45,7 +49,6 @@ struct AlbumListView: View {
                 }
             }
             .listStyle(.plain)
-        }
     }
 }
 

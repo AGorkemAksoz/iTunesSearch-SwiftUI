@@ -24,7 +24,8 @@ struct ItemInfo: View {
                     Text((album.artistName ?? "Unknown Artist"))
                         .font(.caption)
                         .foregroundColor(.gray)
-                    Text(album.trackCount == 1 ? "Single" : String(album.trackCount ?? 0) + "Songs")
+                    Text(album.trackCount == 1 ? "Single" : String(album.trackCount ?? 0) + " Songs")
+                        .font(.system(size: 10, weight: .thin))
                 }
             }
             
@@ -43,10 +44,11 @@ struct ItemInfo: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(movie.trackName ?? "Unknown Song")
                         .font(.system(size: 14))
-                    Text((movie.kind ?? "Unknown Kind"))
+                    Text((movie.primaryGenreName ?? "Unknown Genre"))
                         .font(.caption)
                         .foregroundColor(.gray)
                     Text(movie.country ?? "Unknown Country")
+                        .font(.system(size: 10, weight: .thin))
                 }
             }
         case .all:
